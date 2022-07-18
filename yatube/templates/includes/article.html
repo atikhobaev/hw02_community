@@ -1,0 +1,27 @@
+<article class="card bg-light mb-3" style="padding: 20px">
+  {% for post in posts %}
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date|date:"d E Y" }}
+      </li>
+    </ul>
+    <p>{{ post.text }}</p>    
+
+    {% if post.group %}
+      <div class="d-grid gap-2 d-md-block">
+        <a href="{% url 'posts:group_posts'  post.group.slug %}" type="button" class="btn btn-outline-primary">
+          Открыть посты из группы "{{ post.group.title }}"
+        </a>
+      </div>
+    {% endif %}
+
+    {# под последним постом нет линии #}
+    {% if not forloop.last %}
+    <hr>
+    {% endif %}
+  {% endfor %}
+  </div>
+</article>
