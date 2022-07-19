@@ -4,8 +4,8 @@ from .models import Post, Group
 
 
 class GroupAdmin(admin.ModelAdmin):
-    list_display = ("pk", "description", "title", "slug")
-    search_fields = ("description", "title")
+    list_display = ('pk', 'description', 'title', 'slug')
+    search_fields = ('description', 'title')
     list_filter = ('slug',)
     empty_value_display = "-пусто-"
 
