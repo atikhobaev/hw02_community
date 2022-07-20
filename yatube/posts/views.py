@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import Post, Group
 
-post_quantity = 10
+POST_QUANTITY = 10
 
 
 def index(request):
     """Главная страница с постами."""
-    posts = Post.objects.all()[:post_quantity]
+    posts = Post.objects.all()[:POST_QUANTITY]
     context = {
         'posts': posts,
     }
@@ -18,7 +18,7 @@ def group_posts(request, slug):
     """Страница группы с постами."""
     group = get_object_or_404(Group, slug=slug)
 
-    posts = (group.posts.all()[:post_quantity])
+    posts = (group.posts.all()[:POST_QUANTITY])
     context = {
         'group': group,
         'posts': posts,
